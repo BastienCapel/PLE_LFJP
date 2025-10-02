@@ -85,6 +85,7 @@ header p {
     padding: 6px 12px;
     border-radius: 20px;
     font-size: 0.85rem;
+    text-decoration: none;
 }
 
 .disciplines {
