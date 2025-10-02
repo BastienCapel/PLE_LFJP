@@ -1,119 +1,4 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Projet Local d'Évaluation - LFJP 2025-2026</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #0f4c75 0%, #3282b8 100%);
-            min-height: 100vh; padding: 20px;
-        }
-        .container { max-width: 1200px; margin: 0 auto; background: #fff; border-radius: 15px; box-shadow: 0 20px 60px rgba(0,0,0,0.3); overflow: hidden; }
-        header {
-            background: linear-gradient(135deg, #0f4c75 0%, #3282b8 100%);
-            color: #fff;
-            padding: 40px;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 18px;
-        }
-        header img {
-            width: 140px;
-            max-width: 50%;
-            height: auto;
-            filter: drop-shadow(0 6px 12px rgba(0,0,0,0.25));
-        }
-        header h1 { font-size: 2.5em; margin-bottom: 10px; font-weight: 700; }
-        header p { font-size: 1.1em; opacity: 0.95; }
-        .intro { padding: 30px 40px; background: #f8f9fa; border-bottom: 3px solid #e9ecef; }
-        .intro p { line-height: 1.8; color: #495057; margin-bottom: 15px; }
-        .refs { padding: 10px 40px 0 40px; background: #f8f9fa; display:flex; flex-wrap:wrap; gap:10px; }
-        .badge { display:inline-block; background:#2563eb; color:#fff; padding:6px 12px; border-radius: 20px; font-size: .85em; }
-        .disciplines { padding: 40px; }
-        .disciplines h2 { color: #1d4ed8; margin-bottom: 30px; font-size: 1.8em; text-align: center; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-bottom: 30px; }
-        .card { background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%); color:#fff; padding:25px; border-radius:10px; cursor:pointer; transition:.3s; box-shadow: 0 4px 6px rgba(0,0,0,.1); }
-        .card:hover { transform: translateY(-5px); box-shadow: 0 8px 15px rgba(0,0,0,.2); }
-        .card h3 { font-size:1.2em; margin-bottom:8px; }
-        .card p { font-size:.95em; opacity:.9; }
-        footer { background:#343a40; color:#fff; text-align:center; padding:20px; font-size:.9em; }
-        /* Modal */
-        .modal { display:none; position:fixed; inset:0; background: rgba(0,0,0,.7); z-index:1000; overflow-y:auto; padding:20px; }
-        .modal-content { background:#fff; max-width: 900px; margin: 40px auto; border-radius:15px; box-shadow: 0 20px 60px rgba(0,0,0,.3); animation: slideIn .25s ease; }
-        @keyframes slideIn { from{opacity:0; transform: translateY(-50px);} to{opacity:1; transform:none;} }
-        .modal-header { background: linear-gradient(135deg, #0f4c75 0%, #3282b8 100%); color:#fff; padding: 30px; border-radius: 15px 15px 0 0; position:relative; }
-        .modal-header h2 { font-size: 1.6em; margin-bottom: 5px; }
-        .close { position:absolute; top:20px; right:30px; font-size: 32px; color:#fff; cursor:pointer; line-height:1; transition: transform .2s; }
-        .close:hover { transform: scale(1.1); }
-        .modal-body { padding: 30px 40px; color:#333; }
-        .section { margin-bottom: 26px; }
-        .section h3 { color:#1d4ed8; margin-bottom: 12px; font-size: 1.25em; border-bottom: 2px solid #e9ecef; padding-bottom: 8px; }
-        .section h4 { color:#495057; margin: 16px 0 8px; font-size: 1.05em; }
-        .section p, .section li { line-height: 1.7; color:#495057; margin-bottom: 8px; }
-        .section ul { margin-left: 20px; }
-    </style>
-</head>
-<body>
-<div class="container">
-    <header>
-        <img src="https://i.imgur.com/0YmGlXO.png" alt="Logo du Lycée Français Jacques Prévert" />
-        <h1>Projet Local d'Évaluation</h1>
-        <p>Lycée Français Jacques Prévert – Saly | 2025‑2026</p>
-    </header>
-
-    <div class="intro">
-        <p>Le Projet Local d'Évaluation (PLE) s'inscrit dans le cadre défini par l'arrêté du 16 juillet 2018 relatif aux modalités d'organisation du contrôle continu du baccalauréat général et technologique, et par la note de service du 25 août 2025 (NOR : MENE2523744N). Élaboré collectivement par l'équipe pédagogique, validé par le conseil pédagogique et présenté au conseil d'administration, il garantit l'équité et la transparence de l'évaluation dans le cycle terminal.</p>
-        <p>Le PLE précise les modalités d'évaluation en première et terminale avec une double finalité : certificative pour les disciplines prises en compte dans l'obtention du baccalauréat, informative pour l'orientation et l'entrée dans le supérieur.</p>
-    </div>
-    <div class="refs">
-        <span class="badge">Arrêté 16/07/2018</span>
-        <span class="badge">Note de service 25/08/2025</span>
-        <span class="badge">Banque nationale des sujets</span>
-        <span class="badge">Grilles CECRL</span>
-    </div>
-
-    <div class="disciplines">
-        <h2>Disciplines et modalités d'évaluation</h2>
-        <div class="grid">
-            <div class="card" onclick="openModal('hg')"><h3>📚 Histoire‑Géographie</h3><p>Première et Terminale</p></div>
-            <div class="card" onclick="openModal('emc')"><h3>🗳️ Éducation morale et civique</h3><p>Première et Terminale</p></div>
-            <div class="card" onclick="openModal('es')"><h3>🔬 Enseignement scientifique</h3><p>Première et Terminale</p></div>
-            <div class="card" onclick="openModal('anglais')"><h3>🇬🇧 Anglais</h3><p>Première et Terminale</p></div>
-            <div class="card" onclick="openModal('espagnol')"><h3>🇪🇸 Espagnol</h3><p>Première et Terminale</p></div>
-            <div class="card" onclick="openModal('hggsp')"><h3>🌍 Spécialité HGGSP</h3><p>Première</p></div>
-            <div class="card" onclick="openModal('ses')"><h3>📊 Spécialité SES</h3><p>Première</p></div>
-            <div class="card" onclick="openModal('phch')"><h3>⚗️ Spécialité Physique‑Chimie</h3><p>Première</p></div>
-            <div class="card" onclick="openModal('svt')"><h3>🧬 Spécialité SVT</h3><p>Première</p></div>
-            <div class="card" onclick="openModal('llce')"><h3>📖 Spécialité LLCE‑AMC</h3><p>Première</p></div>
-            <div class="card" onclick="openModal('maths')"><h3>📐 Spécialité Mathématiques</h3><p>Première</p></div>
-        </div>
-    </div>
-
-    <footer>
-        <p>Lycée Français Jacques Prévert – Saly Joseph, BP99 23002 SALY (Sénégal)</p>
-        <p>Tél : +221 33 957 08 53 | secretariat@lfjpsaly.org</p>
-    </footer>
-</div>
-
-<!-- Modal -->
-<div id="modal" class="modal" onclick="closeModalOnBackground(event)">
-    <div class="modal-content" onclick="event.stopPropagation()">
-        <div class="modal-header">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <h2 id="modal-title"></h2>
-        </div>
-        <div class="modal-body" id="modal-body"></div>
-    </div>
-</div>
-
-<script>
-// Contenus détaillés (extraits et synthèse du PLE 2025-2026 du LFJP)
-const modalData = {
+export const modalData = {
   hg: {
     title: "Histoire-Géographie",
     content: `
@@ -143,7 +28,7 @@ const modalData = {
           <li><strong>Oral</strong> : coef 1 à 2</li>
         </ul>
       </div>
-    `
+    `,
   },
   emc: {
     title: "Éducation morale et civique",
@@ -171,7 +56,7 @@ const modalData = {
         <h3>Terminale — Contrôle continu</h3>
         <p>≥ 2 notes. Dossiers documentaires, exposés et débats. Écrits et oraux coef 1 (jusqu'à 2 selon le travail).</p>
       </div>
-    `
+    `,
   },
   es: {
     title: "Enseignement scientifique (SVT)",
@@ -190,7 +75,7 @@ const modalData = {
           <li>Démarche scientifique construite à partir d'un corpus</li>
         </ul>
       </div>
-    `
+    `,
   },
   anglais: {
     title: "Anglais",
@@ -216,7 +101,7 @@ const modalData = {
         </ul>
         <p>Niveau attendu fin Tle : <strong>B2+/C1</strong> (C2 en AMC). Grilles officielles.</p>
       </div>
-    `
+    `,
   },
   espagnol: {
     title: "Espagnol",
@@ -241,7 +126,7 @@ const modalData = {
         </ul>
         <p>Type bac : coef 2. EO : coef 1. Test : coef 0,5.</p>
       </div>
-    `
+    `,
   },
   hggsp: {
     title: "Spécialité HGGSP",
@@ -258,7 +143,7 @@ const modalData = {
         </ul>
         <p>Seuil : &lt; 2 certificatifs ⇒ moyenne non significative.</p>
       </div>
-    `
+    `,
   },
   ses: {
     title: "Spécialité SES",
@@ -274,7 +159,7 @@ const modalData = {
         </ul>
         <p>Seuil : &lt; 2 certificatifs ⇒ moyenne non significative. Moyenne annuelle certificative si non poursuivie en Tle.</p>
       </div>
-    `
+    `,
   },
   phch: {
     title: "Spécialité Physique‑Chimie",
@@ -293,7 +178,7 @@ const modalData = {
           <li>S'approprier, Analyser‑Raisonner, Réaliser, Valider, Communiquer</li>
         </ul>
       </div>
-    `
+    `,
   },
   svt: {
     title: "Spécialité SVT",
@@ -312,7 +197,7 @@ const modalData = {
           <li>Démarche scientifique à partir d'un corpus</li>
         </ul>
       </div>
-    `
+    `,
   },
   llce: {
     title: "Spécialité LLCE — AMC",
@@ -328,7 +213,7 @@ const modalData = {
         </ul>
         <p>Évaluations selon grilles officielles.</p>
       </div>
-    `
+    `,
   },
   maths: {
     title: "Spécialité Mathématiques",
@@ -350,24 +235,6 @@ const modalData = {
         <h4>Correcteur tiers</h4>
         <p>Non applicable.</p>
       </div>
-    `
-  }
+    `,
+  },
 };
-
-function openModal(key){
-  const data = modalData[key];
-  if(!data) return;
-  document.getElementById('modal-title').innerText = data.title;
-  document.getElementById('modal-body').innerHTML = data.content;
-  document.getElementById('modal').style.display = 'block';
-  document.body.style.overflow = 'hidden';
-}
-function closeModal(){
-  document.getElementById('modal').style.display = 'none';
-  document.body.style.overflow = '';
-}
-function closeModalOnBackground(e){ if(e.target.id === 'modal'){ closeModal(); } }
-window.addEventListener('keydown', (e)=>{ if(e.key === 'Escape'){ closeModal(); }});
-</script>
-</body>
-</html>
