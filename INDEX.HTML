@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projet Local d'Évaluation - LFJP 2025-2026</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh; padding: 20px;
+        }
+        .container { max-width: 1200px; margin: 0 auto; background: #fff; border-radius: 15px; box-shadow: 0 20px 60px rgba(0,0,0,0.3); overflow: hidden; }
+        header { background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); color: #fff; padding: 40px; text-align: center; }
+        header h1 { font-size: 2.5em; margin-bottom: 10px; font-weight: 700; }
+        header p { font-size: 1.1em; opacity: 0.95; }
+        .intro { padding: 30px 40px; background: #f8f9fa; border-bottom: 3px solid #e9ecef; }
+        .intro p { line-height: 1.8; color: #495057; margin-bottom: 15px; }
+        .refs { padding: 10px 40px 0 40px; background: #f8f9fa; display:flex; flex-wrap:wrap; gap:10px; }
+        .badge { display:inline-block; background:#667eea; color:#fff; padding:6px 12px; border-radius: 20px; font-size: .85em; }
+        .disciplines { padding: 40px; }
+        .disciplines h2 { color: #2a5298; margin-bottom: 30px; font-size: 1.8em; text-align: center; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-bottom: 30px; }
+        .card { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color:#fff; padding:25px; border-radius:10px; cursor:pointer; transition:.3s; box-shadow: 0 4px 6px rgba(0,0,0,.1); }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 8px 15px rgba(0,0,0,.2); }
+        .card h3 { font-size:1.2em; margin-bottom:8px; }
+        .card p { font-size:.95em; opacity:.9; }
+        footer { background:#343a40; color:#fff; text-align:center; padding:20px; font-size:.9em; }
+        /* Modal */
+        .modal { display:none; position:fixed; inset:0; background: rgba(0,0,0,.7); z-index:1000; overflow-y:auto; padding:20px; }
+        .modal-content { background:#fff; max-width: 900px; margin: 40px auto; border-radius:15px; box-shadow: 0 20px 60px rgba(0,0,0,.3); animation: slideIn .25s ease; }
+        @keyframes slideIn { from{opacity:0; transform: translateY(-50px);} to{opacity:1; transform:none;} }
+        .modal-header { background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); color:#fff; padding: 30px; border-radius: 15px 15px 0 0; position:relative; }
+        .modal-header h2 { font-size: 1.6em; margin-bottom: 5px; }
+        .close { position:absolute; top:20px; right:30px; font-size: 32px; color:#fff; cursor:pointer; line-height:1; transition: transform .2s; }
+        .close:hover { transform: scale(1.1); }
+        .modal-body { padding: 30px 40px; color:#333; }
+        .section { margin-bottom: 26px; }
+        .section h3 { color:#2a5298; margin-bottom: 12px; font-size: 1.25em; border-bottom: 2px solid #e9ecef; padding-bottom: 8px; }
+        .section h4 { color:#495057; margin: 16px 0 8px; font-size: 1.05em; }
+        .section p, .section li { line-height: 1.7; color:#495057; margin-bottom: 8px; }
+        .section ul { margin-left: 20px; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>Projet Local d'Évaluation</h1>
+        <p>Lycée Français Jacques Prévert – Saly | 2025‑2026</p>
+    </header>
+
+    <div class="intro">
+        <p>Le Projet Local d'Évaluation (PLE) s'inscrit dans le cadre défini par l'arrêté du 16 juillet 2018 relatif aux modalités d'organisation du contrôle continu du baccalauréat général et technologique, et par la note de service du 25 août 2025 (NOR : MENE2523744N). Élaboré collectivement par l'équipe pédagogique, validé par le conseil pédagogique et présenté au conseil d'administration, il garantit l'équité et la transparence de l'évaluation dans le cycle terminal.</p>
+        <p>Le PLE précise les modalités d'évaluation en première et terminale avec une double finalité : certificative pour les disciplines prises en compte dans l'obtention du baccalauréat, informative pour l'orientation et l'entrée dans le supérieur.</p>
+    </div>
+    <div class="refs">
+        <span class="badge">Arrêté 16/07/2018</span>
+        <span class="badge">Note de service 25/08/2025</span>
+        <span class="badge">Banque nationale des sujets</span>
+        <span class="badge">Grilles CECRL</span>
+    </div>
+
+    <div class="disciplines">
+        <h2>Disciplines et modalités d'évaluation</h2>
+        <div class="grid">
+            <div class="card" onclick="openModal('hg')"><h3>📚 Histoire‑Géographie</h3><p>Première et Terminale</p></div>
+            <div class="card" onclick="openModal('emc')"><h3>🗳️ Éducation morale et civique</h3><p>Première et Terminale</p></div>
+            <div class="card" onclick="openModal('es')"><h3>🔬 Enseignement scientifique</h3><p>Première et Terminale</p></div>
+            <div class="card" onclick="openModal('anglais')"><h3>🇬🇧 Anglais</h3><p>Première et Terminale</p></div>
+            <div class="card" onclick="openModal('espagnol')"><h3>🇪🇸 Espagnol</h3><p>Première et Terminale</p></div>
+            <div class="card" onclick="openModal('hggsp')"><h3>🌍 Spécialité HGGSP</h3><p>Première</p></div>
+            <div class="card" onclick="openModal('ses')"><h3>📊 Spécialité SES</h3><p>Première</p></div>
+            <div class="card" onclick="openModal('phch')"><h3>⚗️ Spécialité Physique‑Chimie</h3><p>Première</p></div>
+            <div class="card" onclick="openModal('svt')"><h3>🧬 Spécialité SVT</h3><p>Première</p></div>
+            <div class="card" onclick="openModal('llce')"><h3>📖 Spécialité LLCE‑AMC</h3><p>Première</p></div>
+            <div class="card" onclick="openModal('maths')"><h3>📐 Spécialité Mathématiques</h3><p>Première</p></div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Lycée Français Jacques Prévert – Saly Joseph, BP99 23002 SALY (Sénégal)</p>
+        <p>Tél : +221 33 957 08 53 | secretariat@lyceeprevertsaly.com</p>
+    </footer>
+</div>
+
+<!-- Modal -->
+<div id="modal" class="modal" onclick="closeModalOnBackground(event)">
+    <div class="modal-content" onclick="event.stopPropagation()">
+        <div class="modal-header">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 id="modal-title"></h2>
+        </div>
+        <div class="modal-body" id="modal-body"></div>
+    </div>
+</div>
+
+<script>
+// Contenus détaillés (extraits et synthèse du PLE 2025-2026 du LFJP)
+const modalData = {
+  hg: {
+    title: "Histoire-Géographie",
+    content: `
+      <div class="section">
+        <h3>Première — Contrôle continu</h3>
+        <h4>Nombre de notes</h4>
+        <p>≥ 3 notes (QP, analyse de documents, transposition en croquis).</p>
+        <h4>Types et coefficients</h4>
+        <ul>
+          <li><strong>Diagnostiques</strong> : coef 0</li>
+          <li><strong>Tests / DM</strong> : coef 0,5 à 1</li>
+          <li><strong>Sommatifs type bac</strong> : coef 2 (1 à 1,5 si sujets adaptés)</li>
+          <li><strong>Travaux de groupe</strong> : coef 0,5 à 1</li>
+          <li><strong>Oral</strong> : coef 1 à 2</li>
+        </ul>
+        <h4>Seuil de significativité</h4>
+        <p>Moins de 2 travaux certificatifs : moyenne non significative. Absence injustifiée ou fraude : 0.</p>
+      </div>
+      <div class="section">
+        <h3>Terminale — Contrôle continu</h3>
+        <h4>Nombre de notes</h4>
+        <p>≥ 3 notes (QP/AD/PG).</p>
+        <h4>Types et coefficients</h4>
+        <ul>
+          <li><strong>DM / travail en classe</strong> : coef 1</li>
+          <li><strong>DS (QP/AD/PG)</strong> : coef 2</li>
+          <li><strong>Oral</strong> : coef 1 à 2</li>
+        </ul>
+      </div>
+    `
+  },
+  emc: {
+    title: "Éducation morale et civique",
+    content: `
+      <div class="section">
+        <h3>Première — Contrôle continu</h3>
+        <h4>Nombre de notes</h4>
+        <p>≥ 1 note certificative.</p>
+        <h4>Types</h4>
+        <ul>
+          <li>Travaux écrits sur corpus, synthèse</li>
+          <li>Recherche et présentation de projet</li>
+          <li>Débat évalué</li>
+          <li>Prestation orale individuelle</li>
+        </ul>
+        <h4>Coefficients</h4>
+        <ul>
+          <li>Diagnostiques : 0</li>
+          <li>Productions individuelles : 1 à 2</li>
+          <li>Travaux de groupe : 0,5 à 1</li>
+          <li>Certificatives : 2</li>
+        </ul>
+      </div>
+      <div class="section">
+        <h3>Terminale — Contrôle continu</h3>
+        <p>≥ 2 notes. Dossiers documentaires, exposés et débats. Écrits et oraux coef 1 (jusqu'à 2 selon le travail).</p>
+      </div>
+    `
+  },
+  es: {
+    title: "Enseignement scientifique (SVT)",
+    content: `
+      <div class="section">
+        <h3>Première et Terminale — Contrôle continu</h3>
+        <h4>Nombre de notes</h4>
+        <p>2 notes par trimestre dont 1 certificative.</p>
+        <h4>Type et coefficient</h4>
+        <ul>
+          <li>Devoirs sur table : étude de docs + raisonnement scientifique — coef 1</li>
+        </ul>
+        <h4>Critères</h4>
+        <ul>
+          <li>Maîtrise et mobilisation des connaissances</li>
+          <li>Démarche scientifique construite à partir d'un corpus</li>
+        </ul>
+      </div>
+    `
+  },
+  anglais: {
+    title: "Anglais",
+    content: `
+      <div class="section">
+        <h3>Première — Contrôle continu</h3>
+        <p>≥ 2 notes couvrant CO, CE, EO, EE.</p>
+        <ul>
+          <li>CO : compte‑rendu FR ≤ 1'30 — coef 2</li>
+          <li>CE : lecture + questions — coef 2</li>
+          <li>EO : présentations variées — coef 2</li>
+          <li>EE : récit, article, email, contenu digital — coef 2</li>
+          <li>Éval « type bac » au T2 — coef 3</li>
+        </ul>
+        <p>Grilles CECRL. Niveau attendu fin 1re : <strong>B2</strong>.</p>
+      </div>
+      <div class="section">
+        <h3>Terminale — Contrôle continu</h3>
+        <ul>
+          <li>Évals fin de chapitre EO/EE — coef 2</li>
+          <li>Évals « type bac » CO/CE/EO/EE — coef 3</li>
+          <li>Tests vocab/DM — coef 1</li>
+        </ul>
+        <p>Niveau attendu fin Tle : <strong>B2+/C1</strong> (C2 en AMC). Grilles officielles.</p>
+      </div>
+    `
+  },
+  espagnol: {
+    title: "Espagnol",
+    content: `
+      <div class="section">
+        <h3>Première — Contrôle continu</h3>
+        <p>≥ 3 compétences évaluées par trimestre.</p>
+        <ul>
+          <li>CO : compte‑rendu FR ≤ 1'30 — coef 2</li>
+          <li>CE : lecture + Q/Synthèse/CR — coef 2</li>
+          <li>EO : présentations — coef 1</li>
+          <li>EE : récit/article/email/argumentation — coef 2</li>
+          <li>Test vocab/gram — coef 0,5</li>
+        </ul>
+        <p>Grilles CECRL. Niveau attendu fin 1re : <strong>B1</strong>.</p>
+      </div>
+      <div class="section">
+        <h3>Terminale — Contrôle continu</h3>
+        <ul>
+          <li>2 notes type bac</li>
+          <li>1 test de connaissances et EO</li>
+        </ul>
+        <p>Type bac : coef 2. EO : coef 1. Test : coef 0,5.</p>
+      </div>
+    `
+  },
+  hggsp: {
+    title: "Spécialité HGGSP",
+    content: `
+      <div class="section">
+        <h3>Première — Contrôle continu</h3>
+        <p>≥ 3 notes. Dissertation et étude critique de docs. Préparation au Grand Oral.</p>
+        <ul>
+          <li>Diagnostiques : 0</li>
+          <li>Tests / DM : 0,5 à 1</li>
+          <li>Sommatifs type bac : 2 (1 à 1,5 si adaptés)</li>
+          <li>Travaux de groupe : 0,5 à 1</li>
+          <li>Oral : 1 à 2</li>
+        </ul>
+        <p>Seuil : &lt; 2 certificatifs ⇒ moyenne non significative.</p>
+      </div>
+    `
+  },
+  ses: {
+    title: "Spécialité SES",
+    content: `
+      <div class="section">
+        <h3>Première — Contrôle continu</h3>
+        <p>≥ 3 notes sur EC ou dissertation.</p>
+        <ul>
+          <li>EC1 — coef 1 (~10 jours)</li>
+          <li>EC2 — coef 1 (~15 jours)</li>
+          <li>Épreuve complète 2h — coef 2</li>
+          <li>DM / Exposés — coef 1 ou 0,5</li>
+        </ul>
+        <p>Seuil : &lt; 2 certificatifs ⇒ moyenne non significative. Moyenne annuelle certificative si non poursuivie en Tle.</p>
+      </div>
+    `
+  },
+  phch: {
+    title: "Spécialité Physique‑Chimie",
+    content: `
+      <div class="section">
+        <h3>Première — Contrôle continu</h3>
+        <p>≥ 3 notes dont 2 certificatives.</p>
+        <ul>
+          <li>DS notés /20 — <strong>coef 2</strong> (certificatifs)</li>
+          <li>Résolution de problème en groupe — /10 — coef 1</li>
+          <li>QCM Pronote hors classe — /10 — coef 1</li>
+          <li>Activités expérimentales ou documentaires — coef 1</li>
+        </ul>
+        <h4>Compétences</h4>
+        <ul>
+          <li>S'approprier, Analyser‑Raisonner, Réaliser, Valider, Communiquer</li>
+        </ul>
+      </div>
+    `
+  },
+  svt: {
+    title: "Spécialité SVT",
+    content: `
+      <div class="section">
+        <h3>Première — Contrôle continu</h3>
+        <p>≥ 3 notes dont 2 certificatives.</p>
+        <ul>
+          <li>DS : texte argumenté + raisonnement scientifique — coef 2</li>
+          <li>DM et/ou oraux — coef 1</li>
+          <li>TP — coef 1</li>
+        </ul>
+        <h4>Critères</h4>
+        <ul>
+          <li>Maîtrise des connaissances et mobilisation</li>
+          <li>Démarche scientifique à partir d'un corpus</li>
+        </ul>
+      </div>
+    `
+  },
+  llce: {
+    title: "Spécialité LLCE — AMC",
+    content: `
+      <div class="section">
+        <h3>Première — Contrôle continu</h3>
+        <p>≥ 3 notes.</p>
+        <ul>
+          <li>EO (présentations variées) — coef 2</li>
+          <li>EE — coef 2</li>
+          <li>CE — coef 2</li>
+          <li>Dès T2 : évaluations « type bac » synthèse et traduction — coef 2</li>
+        </ul>
+        <p>Évaluations selon grilles officielles.</p>
+      </div>
+    `
+  },
+  maths: {
+    title: "Spécialité Mathématiques",
+    content: `
+      <div class="section">
+        <h3>Première — Contrôle continu</h3>
+        <h4>Nombre de notes</h4>
+        <p>Au moins 3 notes.</p>
+        <h4>Types d'évaluations et coefficients</h4>
+        <ul>
+          <li><strong>Devoirs sur table</strong> : problèmes et exercices « type bac » — coef 1</li>
+          <li><strong>QCM et questions de cours</strong> — coef 0,5</li>
+        </ul>
+        <h4>Critères d'évaluation</h4>
+        <ul>
+          <li>Mise en œuvre d'automatismes et applications directes du cours</li>
+          <li>6 compétences : Chercher, Modéliser, Représenter, Raisonner, Calculer, Communiquer</li>
+        </ul>
+        <h4>Correcteur tiers</h4>
+        <p>Non applicable.</p>
+      </div>
+    `
+  }
+};
+
+function openModal(key){
+  const data = modalData[key];
+  if(!data) return;
+  document.getElementById('modal-title').innerText = data.title;
+  document.getElementById('modal-body').innerHTML = data.content;
+  document.getElementById('modal').style.display = 'block';
+  document.body.style.overflow = 'hidden';
+}
+function closeModal(){
+  document.getElementById('modal').style.display = 'none';
+  document.body.style.overflow = '';
+}
+function closeModalOnBackground(e){ if(e.target.id === 'modal'){ closeModal(); } }
+window.addEventListener('keydown', (e)=>{ if(e.key === 'Escape'){ closeModal(); }});
+</script>
+</body>
+</html>
