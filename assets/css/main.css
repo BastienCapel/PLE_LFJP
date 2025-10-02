@@ -1,7 +1,7 @@
 :root {
-    --primary-dark: #0f4c75;
-    --primary-medium: #3282b8;
-    --accent: #2563eb;
+    --primary-dark: #1d5f8c;
+    --primary-medium: #6cb1de;
+    --accent: #3d7cc9;
     --text-dark: #495057;
     --surface: #ffffff;
     --surface-muted: #f8f9fa;
@@ -106,7 +106,7 @@ header p {
 }
 
 .card {
-    background: linear-gradient(135deg, #1e3a8a 0%, var(--accent) 100%);
+    background: linear-gradient(135deg, #2c5fa7 0%, var(--accent) 100%);
     color: var(--surface);
     padding: 25px;
     border-radius: 10px;
