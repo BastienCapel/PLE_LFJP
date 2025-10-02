@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projet Local d'Évaluation - LFJP 2025-2026</title>
+    <link rel="stylesheet" href="assets/css/main.css" />
+</head>
+<body>
+<div class="container">
+    <header>
+        <img src="https://i.imgur.com/0YmGlXO.png" alt="Logo du Lycée Français Jacques Prévert" />
+        <h1>Projet Local d'Évaluation</h1>
+        <p>Lycée Français Jacques Prévert – Saly | 2025‑2026</p>
+    </header>
+
+    <div class="intro">
+        <p>Le Projet Local d'Évaluation (PLE) s'inscrit dans le cadre défini par l'arrêté du 16 juillet 2018 relatif aux modalités d'organisation du contrôle continu du baccalauréat général et technologique, et par la note de service du 25 août 2025 (NOR : MENE2523744N). Élaboré collectivement par l'équipe pédagogique, validé par le conseil pédagogique et présenté au conseil d'administration, il garantit l'équité et la transparence de l'évaluation dans le cycle terminal.</p>
+        <p>Le PLE précise les modalités d'évaluation en première et terminale avec une double finalité : certificative pour les disciplines prises en compte dans l'obtention du baccalauréat, informative pour l'orientation et l'entrée dans le supérieur.</p>
+    </div>
+    <div class="refs">
+        <span class="badge">Arrêté 16/07/2018</span>
+        <span class="badge">Note de service 25/08/2025</span>
+        <span class="badge">Banque nationale des sujets</span>
+        <span class="badge">Grilles CECRL</span>
+    </div>
+
+    <section class="disciplines" aria-labelledby="disciplines-title">
+        <h2 id="disciplines-title">Disciplines et modalités d'évaluation</h2>
+        <div class="grid">
+            <button type="button" class="card" data-modal="hg"><h3>📚 Histoire‑Géographie</h3><p>Première et Terminale</p></button>
+            <button type="button" class="card" data-modal="emc"><h3>🗳️ Éducation morale et civique</h3><p>Première et Terminale</p></button>
+            <button type="button" class="card" data-modal="es"><h3>🔬 Enseignement scientifique</h3><p>Première et Terminale</p></button>
+            <button type="button" class="card" data-modal="anglais"><h3>🇬🇧 Anglais</h3><p>Première et Terminale</p></button>
+            <button type="button" class="card" data-modal="espagnol"><h3>🇪🇸 Espagnol</h3><p>Première et Terminale</p></button>
+            <button type="button" class="card" data-modal="hggsp"><h3>🌍 Spécialité HGGSP</h3><p>Première</p></button>
+            <button type="button" class="card" data-modal="ses"><h3>📊 Spécialité SES</h3><p>Première</p></button>
+            <button type="button" class="card" data-modal="phch"><h3>⚗️ Spécialité Physique‑Chimie</h3><p>Première</p></button>
+            <button type="button" class="card" data-modal="svt"><h3>🧬 Spécialité SVT</h3><p>Première</p></button>
+            <button type="button" class="card" data-modal="llce"><h3>📖 Spécialité LLCE‑AMC</h3><p>Première</p></button>
+            <button type="button" class="card" data-modal="maths"><h3>📐 Spécialité Mathématiques</h3><p>Première</p></button>
+        </div>
+    </section>
+
+    <footer>
+        <p>Lycée Français Jacques Prévert – Saly Joseph, BP99 23002 SALY (Sénégal)</p>
+        <p>Tél : +221 33 957 08 53 | secretariat@lfjpsaly.org</p>
+    </footer>
+</div>
+
+<div id="modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" hidden>
+    <div class="modal-content" role="document">
+        <div class="modal-header">
+            <button type="button" class="close" aria-label="Fermer le détail" data-close-modal>&times;</button>
+            <h2 id="modal-title"></h2>
+        </div>
+        <div class="modal-body" id="modal-body"></div>
+    </div>
+</div>
+
+<script type="module" src="assets/js/modal.js"></script>
+</body>
+</html>
